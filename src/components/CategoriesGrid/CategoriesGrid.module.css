@@ -1,0 +1,194 @@
+.categoriesSection {
+  padding: 8rem 2rem;
+  background-image: url('/images/awards-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  position: relative;
+  z-index: 1;
+}
+
+.categoriesSection::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, var(--color-bg) 0%, rgba(10,8,20,0.8) 20%, rgba(10,8,20,0.95) 80%, var(--color-bg) 100%);
+  z-index: -1;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.heading {
+  font-size: 3rem;
+  color: var(--color-text-main);
+  margin-bottom: 1rem;
+}
+
+.goldLine {
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--color-gold-primary), transparent);
+  border-radius: 2px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.card {
+  padding: 2.5rem 2rem;
+  transition: box-shadow 0.4s ease, border-color 0.4s ease;
+  opacity: 0; /* for initial GSAP state */
+  cursor: pointer;
+  transform-style: preserve-3d;
+  position: relative;
+  overflow: visible; /* Allow content to pop out in 3D */
+}
+
+.cardContent {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  position: relative;
+  z-index: 2; /* Keep content above flashlight */
+  pointer-events: none; /* Let mouse events hit the card */
+  transform-style: preserve-3d;
+  transform: translateZ(30px); /* Float the content above the card base */
+  transition: transform 0.4s ease;
+}
+
+.card:hover .cardContent {
+  transform: translateZ(50px); /* Pop out even more on hover */
+}
+
+/* Magnetic Flashlight Effect */
+.cardGlow {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  overflow: hidden;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.cardGlow::before {
+  content: '';
+  position: absolute;
+  inset: -100px; /* Oversize to prevent clipping */
+  background: radial-gradient(
+    400px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgba(197, 154, 48, 0.25),
+    transparent 50%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.card:hover .cardGlow::before {
+  opacity: 1;
+}
+
+.cardGlow::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 40%,
+    rgba(212, 168, 67, 0.15) 50%,
+    transparent 60%
+  );
+  transform: translateX(-100%);
+  transition: none;
+  pointer-events: none;
+}
+
+.card:hover .cardGlow::after {
+  transform: translateX(100%);
+  transition: transform 0.5s ease;
+}
+
+.card:hover {
+  /* GSAP handles transform (scale, rotate, y), CSS handles styles */
+  box-shadow: 0 0 30px rgba(212,168,67,0.2), 0 0 60px rgba(212,168,67,0.08);
+  border-color: rgba(197, 154, 48, 0.5);
+  z-index: 10;
+}
+
+.iconWrapper {
+  width: 50px;
+  height: 50px;
+  border-radius: 12px;
+  background: rgba(197, 154, 48, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(197, 154, 48, 0.2);
+  flex-shrink: 0;
+  transition: all 0.4s ease;
+  transform-style: preserve-3d;
+}
+
+.card:hover .iconWrapper {
+  background: rgba(197, 154, 48, 0.2);
+  transform: scale(1.1) translateZ(20px) rotate(5deg); /* Dynamic pop out */
+  box-shadow: 0 10px 20px rgba(197, 154, 48, 0.2);
+}
+
+.categoryName {
+  font-family: var(--font-body);
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin: 0;
+}
+
+.tamilText {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--color-gold-highlight);
+  line-height: 1.3;
+}
+
+.englishText {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--color-text-main);
+  line-height: 1.3;
+  letter-spacing: 0.02em;
+}
+
+@media (max-width: 968px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .categoriesSection {
+    padding: 4rem 1rem;
+  }
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  .heading {
+    font-size: 2rem;
+    text-align: center;
+  }
+  .card {
+    padding: 1.5rem 1.25rem;
+  }
+}

@@ -1,0 +1,125 @@
+/* App specific styles, if needed */
+.app-container {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+}
+
+.top-header {
+  position: fixed; /* Make it stick to the top so the frosted glass effect is visible when scrolling over content */
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 0;
+  z-index: 1000;
+  background: rgba(13, 15, 26, 0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(212, 168, 67, 0.15);
+  pointer-events: auto; /* Re-enable pointer events since it's a solid bar now */
+}
+
+.header-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  pointer-events: auto;
+}
+
+.header-left, .header-right {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.header-left {
+  justify-content: flex-start;
+}
+
+.header-right {
+  justify-content: flex-end;
+}
+
+.header-center {
+  flex: 2;
+  display: flex;
+  justify-content: center;
+}
+
+.header-text {
+  font-family: var(--font-heading);
+  font-size: 2.2rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  margin: 0;
+  text-transform: uppercase;
+  
+  /* Premium Metallic Gold Gradient */
+  background: linear-gradient(
+    to right, 
+    #BF953F 0%, 
+    #FCF6BA 25%, 
+    #B38728 50%, 
+    #FBF5B7 75%, 
+    #AA771C 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  
+  filter: drop-shadow(0px 4px 10px rgba(0, 0, 0, 0.6));
+}
+
+/* Crop the globe icon from the original logo image */
+.logo-icon-wrapper {
+  width: 70px;
+  height: 80px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.header-logo-icon {
+  height: 100px; /* Scale up slightly so globe fills the width */
+  max-width: none;
+  object-fit: contain;
+  object-position: left center;
+  margin-left: -5px; /* Shift left slightly */
+  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));
+}
+
+/* Responsive Header */
+@media (max-width: 1024px) {
+  .header-container {
+    height: 100px;
+    padding: 0 1.5rem;
+  }
+  .header-text {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .header-container {
+    height: 80px;
+    padding: 0 1rem;
+    justify-content: center;
+  }
+  .header-left, .header-right {
+    display: none;
+  }
+  .header-center {
+    flex: 1;
+  }
+  .header-text {
+    font-size: 1.4rem;
+    text-align: center;
+    width: 100%;
+  }
+}
