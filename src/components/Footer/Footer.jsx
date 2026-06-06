@@ -59,17 +59,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className={styles.socialLinks}>
-          <a href="#" className={styles.socialIcon} aria-label="Facebook">
-            <FacebookIcon size={20} />
-          </a>
-          <a href="#" className={styles.socialIcon} aria-label="Twitter">
-            <TwitterIcon size={20} />
-          </a>
-          <a href="#" className={styles.socialIcon} aria-label="Instagram">
-            <InstagramIcon size={20} />
-          </a>
-        </div>
+
 
         <div className={styles.copyright}>
           <p>&copy; 2026 Winngoo Link India Private Limited. All Rights Reserved.</p>

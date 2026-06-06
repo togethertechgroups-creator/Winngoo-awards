@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 
 const COLORS = [
-  'rgba(212, 168, 67, 0.18)', // Gold bokeh
+  'rgba(192, 192, 192, 0.18)', // Silver bokeh
   'rgba(255, 240, 200, 0.12)', // Warm white
   'rgba(185, 28, 28, 0.10)', // Crimson
   'rgba(30, 60, 180, 0.08)' // Deep blue

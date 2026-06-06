@@ -283,7 +283,7 @@ const NominationForm = ({ preSelectedCategory }) => {
           ) : (
             <>
               <div className={styles.noteBox}>
-                <h4 style={{ color: 'var(--color-gold-primary)', marginBottom: '0.5rem', fontSize: '1.2rem' }}>Title Sponsor Benefits</h4>
+                <h4 style={{ color: '#FFFFFF', marginBottom: '0.5rem', fontSize: '1.2rem' }}>Title Sponsor Benefits</h4>
                 <p>They will be the title sponsor for the Winngoo Awards event. We will display their brand ads in stage LED screen and honour awards will be provided. The Sponsor fee is <strong>₹25,000</strong>.</p>
               </div>
 
@@ -331,7 +331,7 @@ const NominationForm = ({ preSelectedCategory }) => {
                       type="text" 
                       value="₹25,000"
                       disabled
-                      style={{ background: 'rgba(255,255,255,0.05)', color: 'var(--color-gold-highlight)', fontWeight: 'bold' }}
+                      style={{ background: 'rgba(255,255,255,0.05)', color: 'var(--color-primary-highlight)', fontWeight: 'bold' }}
                     />
                   </div>
                 </div>

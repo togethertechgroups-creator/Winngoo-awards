@@ -84,11 +84,12 @@ const HeroSection = () => {
             <div className={styles.imageOverlay}></div>
             <img src={chiefGuestImg} alt="Pandiarajan" className={styles.heroImage} />
             
-            <div className={styles.guestLabel}>
-              <span className={styles.guestRole}>Chief Guest</span>
-              <span className={styles.guestName}>Pandiarajan</span>
-              <span className={styles.guestTitle}>Actor & Director</span>
-            </div>
+          </div>
+          
+          <div className={styles.guestLabel}>
+            <span className={styles.guestRole}>Chief Guest</span>
+            <span className={styles.guestName}>Pandiarajan</span>
+            <span className={styles.guestTitle}>Actor & Director</span>
           </div>
         </div>
 

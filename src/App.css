@@ -6,17 +6,19 @@
 }
 
 .top-header {
-  position: fixed; /* Make it stick to the top so the frosted glass effect is visible when scrolling over content */
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   padding: 0;
   z-index: 1000;
-  background: rgba(13, 15, 26, 0.75);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(212, 168, 67, 0.15);
-  pointer-events: auto; /* Re-enable pointer events since it's a solid bar now */
+  background-color: rgba(92, 20, 31, 1);
+  background-image: url('/images/hed.png');
+  background-size: contain;
+  background-position: center;
+  background-repeat: repeat-x;
+  border-bottom: 1px solid rgba(142, 31, 48, 0.3);
+  pointer-events: auto;
 }
 
 .header-container {
@@ -58,14 +60,14 @@
   margin: 0;
   text-transform: uppercase;
   
-  /* Premium Metallic Gold Gradient */
+  /* Premium Metallic Silver Gradient */
   background: linear-gradient(
     to right, 
-    #BF953F 0%, 
-    #FCF6BA 25%, 
-    #B38728 50%, 
-    #FBF5B7 75%, 
-    #AA771C 100%
+    #A9A9A9 0%, 
+    #FFFFFF 25%, 
+    #C0C0C0 50%, 
+    #E5E4E2 75%, 
+    #808080 100%
   );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;

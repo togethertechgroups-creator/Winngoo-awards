@@ -6,11 +6,13 @@ import HeroSection from './components/HeroSection/HeroSection';
 import CategoriesGrid from './components/CategoriesGrid/CategoriesGrid';
 import NominationForm from './components/NominationForm/NominationForm';
 import Footer from './components/Footer/Footer';
+import Preloader from './components/Preloader/Preloader';
 import './App.css';
 
 gsap.registerPlugin(ScrollTrigger);
 
 function App() {
+  const [showPreloader, setShowPreloader] = useState(true);
   const [selectedCategory, setSelectedCategory] = useState("");
 
   const handleCategoryClick = (category) => {
@@ -20,6 +22,14 @@ function App() {
       nominateSection.scrollIntoView({ behavior: 'smooth' });
     }
   };
+
+  useEffect(() => {
+    if (showPreloader) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+  }, [showPreloader]);
 
   useEffect(() => {
     gsap.utils.toArray('.section-heading').forEach((heading) => {
@@ -36,6 +46,8 @@ function App() {
 
   return (
     <div className="app-container">
+      {showPreloader && <Preloader onComplete={() => setShowPreloader(false)} />}
+      
       {/* New Bokeh Background Layer */}
       <BokehBackground />
 

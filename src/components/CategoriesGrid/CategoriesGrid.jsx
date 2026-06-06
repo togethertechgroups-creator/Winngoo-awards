@@ -48,8 +48,8 @@ const CategoryCard = ({ cat, onClick }) => {
     // For 3D tilt (Stronger and smoother)
     const centerX = rect.width / 2;
     const centerY = rect.height / 2;
-    const rotateX = ((y - centerY) / centerY) * -15; 
-    const rotateY = ((x - centerX) / centerX) * 15;
+    const rotateX = ((y - centerY) / centerY) * -35; 
+    const rotateY = ((x - centerX) / centerX) * 35;
 
     gsap.to(cardRef.current, {
       rotateX,
@@ -58,7 +58,7 @@ const CategoryCard = ({ cat, onClick }) => {
       y: -10, // lift up
       duration: 0.4,
       ease: 'power3.out',
-      transformPerspective: 1200
+      transformPerspective: 800
     });
   };
 
