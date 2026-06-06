@@ -3,7 +3,7 @@
   top: 0;
   left: 0;
   width: 100vw;
-  height: 100vh;
+  height: 100dvh;
   background-color: #000;
   z-index: 99999;
   display: flex;
@@ -11,6 +11,7 @@
   align-items: center;
   transition: opacity 1s ease-in-out;
   opacity: 1;
+  overflow: hidden;
 }
 
 .preloaderContainer.fadeOut {
@@ -46,3 +47,18 @@
 .skipButton:hover {
   background: rgba(255, 255, 255, 0.3);
 }
+
+@media (max-width: 768px) {
+  .video {
+    object-fit: contain; /* Show full width of cinematic video on mobile */
+    transform: scale(1.05); /* Lower scale since watermark is small and contain will add black bars */
+  }
+  
+  .skipButton {
+    bottom: 1rem;
+    right: 1rem;
+    padding: 0.4rem 1.2rem;
+    font-size: 0.9rem;
+  }
+}
+
