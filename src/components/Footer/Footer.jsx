@@ -34,7 +34,7 @@ const Footer = () => {
       <div className={styles.container}>
         <div className={styles.logoWrapper}>
           <WinngooLogo size={60} />
-        </div>
+        </div> 
         
         <p className={styles.tagline}>
           தொழில்துறையில் சிறந்து விளங்கும் வணிகர்கள் மற்றும் நிறுவனங்களை கௌரவிக்கும் மாபெரும் விருது வழங்கும் விழா

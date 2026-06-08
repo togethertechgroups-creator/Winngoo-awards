@@ -32,10 +32,12 @@ function App() {
   }, [showPreloader]);
 
   useEffect(() => {
+    if (showPreloader) return;
+    
     gsap.utils.toArray('.section-heading').forEach((heading) => {
-      gsap.fromTo(heading, 
+      gsap.fromTo(heading,
         { opacity: 0, y: 30, filter: "blur(8px)" },
-        { 
+        {
           opacity: 1, y: 0, filter: "blur(0px)",
           duration: 0.9, ease: "power3.out",
           scrollTrigger: { trigger: heading, start: "top 85%", once: true }
@@ -67,7 +69,7 @@ function App() {
         <CategoriesGrid onCategoryClick={handleCategoryClick} />
         <NominationForm preSelectedCategory={selectedCategory} />
       </main>
-      
+
       <Footer />
     </div>
   );
