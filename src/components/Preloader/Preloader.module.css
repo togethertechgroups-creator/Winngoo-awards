@@ -50,8 +50,8 @@
 
 @media (max-width: 768px) {
   .video {
-    object-fit: contain; /* Show full width of cinematic video on mobile */
-    transform: scale(1.05); /* Lower scale since watermark is small and contain will add black bars */
+    object-fit: cover; /* Cover the entire screen, eliminating black bars */
+    transform: scale(1.05); /* Lower scale since watermark is small */
   }
   
   .skipButton {
