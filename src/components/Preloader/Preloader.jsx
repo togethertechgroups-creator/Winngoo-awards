@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import styles from './Preloader.module.css';
 import desktopVideoSrc from '../../assets/Need_to_Generate_a_K_Cinemati.mp4';
-import mobileVideoSrc from '../../assets/redure_the_font_size_and_the_g.mp4';
+import mobileVideoSrc from '../../assets/WhatsApp Video 2026-06-08 at 12.05.40 PM.mp4';
 
 const Preloader = ({ onComplete }) => {
   const [isFadingOut, setIsFadingOut] = useState(false);
