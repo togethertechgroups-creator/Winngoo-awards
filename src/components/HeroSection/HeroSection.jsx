@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import anime from 'animejs/lib/anime.es.js';
+import { MapPin, Calendar } from 'lucide-react';
 import styles from './HeroSection.module.css';
 import chiefGuestImg from '../../assets/cheif-guest.png';
 import WinngooLogo from '../../assets/WinngooLogo';
@@ -38,10 +39,9 @@ const HeroSection = () => {
       easing: 'easeOutQuart'
     }, '-=800')
     .add({
-      targets: `.${styles.tagline}, .${styles.venueChip}`,
+      targets: `.${styles.tagline}`,
       opacity: [0, 1],
-      translateY: [20, 0],
-      delay: anime.stagger(150)
+      translateY: [20, 0]
     }, '-=1000')
     .add({
       targets: imageRef.current,
@@ -71,9 +71,6 @@ const HeroSection = () => {
           <h1 className={styles.brandTitle}>WINNGOO BUSINESS AWARDS</h1>
           <div className={styles.goldRule} ref={ruleRef}></div>
           <p className={styles.tagline}>Celebrating Excellence. Inspiring Achievement.</p>
-          <div className={`glass-card ${styles.venueChip}`}>
-            Egmore Museum, Chennai • 28-09-26
-          </div>
         </div>
 
         {/* Editorial Image Composition */}
@@ -90,6 +87,19 @@ const HeroSection = () => {
             <span className={styles.guestRole}>Chief Guest</span>
             <span className={styles.guestName}>Pandiarajan</span>
             <span className={styles.guestTitle}>Actor & Director</span>
+
+            <div className={styles.cardDivider}></div>
+
+            <div className={styles.eventDetailsBox}>
+              <div className={styles.eventDetailItem}>
+                <MapPin size={16} className={styles.eventDetailIcon} />
+                <span className={styles.eventDetailText}>Egmore Museum, Chennai</span>
+              </div>
+              <div className={styles.eventDetailItem}>
+                <Calendar size={16} className={styles.eventDetailIcon} />
+                <span className={styles.eventDetailText}>28-09-26</span>
+              </div>
+            </div>
           </div>
         </div>
 

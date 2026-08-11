@@ -190,21 +190,22 @@
   bottom: -2rem;
   left: 50%;
   transform: translateX(-50%);
-  padding: 1.5rem 3rem;
+  padding: 1.25rem 2rem;
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
+  gap: 0.35rem;
   z-index: 10;
   text-align: center;
   align-items: center;
-  min-width: 300px;
+  min-width: 320px;
+  max-width: 90%;
 
   background: rgba(26, 10, 14, 0.95);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(212, 175, 55, 0.3);
   border-radius: 16px;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7), 0 0 25px rgba(142, 31, 48, 0.2);
 }
 
 .guestRole {
@@ -227,6 +228,47 @@
 .guestTitle {
   font-size: 0.9rem;
   color: var(--color-text-muted);
+}
+
+.cardDivider {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.5), transparent);
+  margin: 0.5rem 0;
+}
+
+.eventDetailsBox {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  width: 100%;
+  align-items: center;
+}
+
+.eventDetailItem {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--color-text-main);
+  background: rgba(255, 255, 255, 0.06);
+  padding: 0.4rem 0.85rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.eventDetailIcon {
+  color: #D4AF37;
+  flex-shrink: 0;
+}
+
+.eventDetailText {
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  white-space: nowrap;
 }
 
 @media (max-width: 1024px) {
