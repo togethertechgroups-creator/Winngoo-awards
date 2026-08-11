@@ -329,7 +329,7 @@ const NominationForm = ({ preSelectedCategory }) => {
                     <label>Sponsorship Amount</label>
                     <input 
                       type="text" 
-                      value="₹25,000"
+                      value="₹50,000"
                       disabled
                       style={{ background: 'rgba(255,255,255,0.05)', color: 'var(--color-primary-highlight)', fontWeight: 'bold' }}
                     />
