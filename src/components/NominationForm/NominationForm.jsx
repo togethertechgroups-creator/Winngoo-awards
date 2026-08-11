@@ -98,7 +98,7 @@ const NominationForm = ({ preSelectedCategory }) => {
               Your nomination has been successfully submitted. Our executive will contact you shortly.
             </p>
             <div className={styles.qrSection}>
-              <h3 className={styles.qrTitle}>Proceed to Payment Now ({activeTab === 'participant' ? '₹3,500' : '₹25,000'})</h3>
+              <h3 className={styles.qrTitle}>Proceed to Payment Now ({activeTab === 'participant' ? '₹5,000' : '₹25,000'})</h3>
               <div className={styles.qrWrapper}>
                 <img src={qrCodeImg} alt="Payment QR Code" className={styles.qrImage} />
               </div>
@@ -148,7 +148,7 @@ const NominationForm = ({ preSelectedCategory }) => {
           {activeTab === 'participant' ? (
             <>
               <div className={styles.noteBox}>
-                <p>உங்கள் நாமினேஷன் பதிவு செய்ய எந்த கட்டணமும் இல்லை மற்றும் நீங்கள் இந்த விருதிற்கு தேர்வு செய்யப்படும் பட்சத்தில் விருது வழங்கும் விழாவில் பங்கேற்பதற்காகவும் விருதின் நன்மைகளை அடைவதற்கும் 3500 ரூபாய் மட்டும் கட்டணமாக செலுத்தப்பட வேண்டும்.</p>
+                <p>உங்கள் நாமினேஷன் பதிவு செய்ய எந்த கட்டணமும் இல்லை மற்றும் நீங்கள் இந்த விருதிற்கு தேர்வு செய்யப்படும் பட்சத்தில் விருது வழங்கும் விழாவில் பங்கேற்பதற்காகவும் விருதின் நன்மைகளை அடைவதற்கும் 5000 ரூபாய் மட்டும் கட்டணமாக செலுத்தப்பட வேண்டும்.</p>
               </div>
 
           <form key="participant-form" onSubmit={handleSubmit(onSubmit)} className={styles.form}>

@@ -72,7 +72,7 @@ const HeroSection = () => {
           <div className={styles.goldRule} ref={ruleRef}></div>
           <p className={styles.tagline}>Celebrating Excellence. Inspiring Achievement.</p>
           <div className={`glass-card ${styles.venueChip}`}>
-            Chennai, Tamil Nadu • 2026
+            Egmore Museum, Chennai • 28-09-26
           </div>
         </div>
 
