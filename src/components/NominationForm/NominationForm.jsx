@@ -70,7 +70,7 @@ const NominationForm = ({ preSelectedCategory }) => {
                   `*Brand/Company:* ${data.sponsorCompany}\n` +
                   `*WhatsApp:* ${data.sponsorWhatsapp}\n` +
                   `*Email:* ${data.sponsorEmail}\n` +
-                  `*Sponsorship Amount:* ₹25,000\n` +
+                  `*Sponsorship Amount:* ₹50,000\n` +
                   `-----------------------------------`;
       }
 
@@ -98,7 +98,7 @@ const NominationForm = ({ preSelectedCategory }) => {
               Your nomination has been successfully submitted. Our executive will contact you shortly.
             </p>
             <div className={styles.qrSection}>
-              <h3 className={styles.qrTitle}>Proceed to Payment Now ({activeTab === 'participant' ? '₹5,000' : '₹25,000'})</h3>
+              <h3 className={styles.qrTitle}>Proceed to Payment Now ({activeTab === 'participant' ? '₹5,000' : '₹50,000'})</h3>
               <div className={styles.qrWrapper}>
                 <img src={qrCodeImg} alt="Payment QR Code" className={styles.qrImage} />
               </div>
@@ -284,7 +284,7 @@ const NominationForm = ({ preSelectedCategory }) => {
             <>
               <div className={styles.noteBox}>
                 <h4 style={{ color: '#FFFFFF', marginBottom: '0.5rem', fontSize: '1.2rem' }}>Title Sponsor Benefits</h4>
-                <p>They will be the title sponsor for the Winngoo Awards event. We will display their brand ads in stage LED screen and honour awards will be provided. The Sponsor fee is <strong>₹25,000</strong>.</p>
+                <p>They will be the title sponsor for the Winngoo Awards event. We will display their brand ads in stage LED screen and honour awards will be provided. The Sponsor fee is <strong>₹50,000</strong>.</p>
               </div>
 
               <form key="sponsor-form" onSubmit={handleSubmit(onSubmit)} className={styles.form}>
