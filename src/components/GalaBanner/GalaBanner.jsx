@@ -1,5 +1,5 @@
 import React from 'react';
-import { Calendar, MapPin, ArrowRight } from 'lucide-react';
+import { Calendar, ArrowRight } from 'lucide-react';
 import styles from './GalaBanner.module.css';
 
 const GalaBanner = () => {
@@ -23,11 +23,6 @@ const GalaBanner = () => {
               <div className={styles.metaItem}>
                 <Calendar size={16} />
                 <span>February 07</span>
-              </div>
-              <span className={styles.metaDot}>•</span>
-              <div className={styles.metaItem}>
-                <MapPin size={16} />
-                <span>Egmore Museum, Chennai</span>
               </div>
             </div>
 
