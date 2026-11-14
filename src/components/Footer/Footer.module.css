@@ -57,11 +57,11 @@
 
 .logoAura {
   position: absolute;
-  width: 120px;
-  height: 120px;
+  width: 160px;
+  height: 110px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(197, 160, 89, 0.35) 0%, rgba(197, 160, 89, 0.05) 60%, transparent 80%);
-  filter: blur(14px);
+  background: radial-gradient(ellipse at center, rgba(197, 160, 89, 0.4) 0%, rgba(197, 160, 89, 0.08) 60%, transparent 80%);
+  filter: blur(16px);
   pointer-events: none;
   animation: logoAuraPulse 3.5s ease-in-out infinite alternate;
 }

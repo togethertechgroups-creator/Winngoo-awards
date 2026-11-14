@@ -1,28 +1,30 @@
 import React from 'react';
+import wLogoImg from './winngoo-w-logo.png';
 
-const WinngooLogo = ({ size = 60, className = "" }) => (
-  <svg 
-    width={size} 
-    height={size} 
-    viewBox="0 0 100 100" 
-    fill="none" 
-    xmlns="http://www.w3.org/2000/svg"
+const WinngooLogo = ({ size = 68, className = "" }) => (
+  <div 
     className={className}
+    style={{
+      display: 'inline-flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      width: `${Math.round(size * 1.54)}px`,
+      height: `${size}px`,
+      userSelect: 'none'
+    }}
   >
-    <defs>
-      <linearGradient id="hexGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stopColor="#FAF9F6" />
-        <stop offset="50%" stopColor="#DFBE7E" />
-        <stop offset="100%" stopColor="#C5A059" />
-      </linearGradient>
-    </defs>
-    
-    {/* Hexagon Base */}
-    <polygon points="50,5 95,25 95,75 50,95 5,75 5,25" fill="url(#hexGradient)" opacity="0.1" stroke="url(#hexGradient)" strokeWidth="2" />
-    
-    {/* Geometric W */}
-    <path d="M25 35 L40 70 L50 50 L60 70 L75 35" stroke="url(#hexGradient)" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round" fill="none" />
-  </svg>
+    <img 
+      src={wLogoImg} 
+      alt="Winngoo Monogram Logo" 
+      style={{
+        width: '100%',
+        height: '100%',
+        objectFit: 'contain',
+        display: 'block',
+        filter: 'drop-shadow(0 4px 14px rgba(197, 160, 89, 0.45))'
+      }} 
+    />
+  </div>
 );
 
 export default WinngooLogo;
