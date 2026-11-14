@@ -77,13 +77,13 @@ function App() {
       {/* Subtle organic ambient bokeh */}
       <BokehBackground />
 
-      {/* Top Header — Displaying "Wingoo Awards" flanked by Classic Gold Trophies */}
+      {/* Top Header — Displaying "Winngoo Awards" flanked by Classic Gold Trophies */}
       <header className="top-header">
         <div className="header-container">
           <div className="header-title-wrapper">
             <HeaderTrophy size={32} className="header-trophy-svg header-trophy-left" />
             <h1 className="header-single-title">
-              Wingoo Awards
+              Winngoo Awards
             </h1>
             <HeaderTrophy size={32} className="header-trophy-svg header-trophy-right" />
           </div>
