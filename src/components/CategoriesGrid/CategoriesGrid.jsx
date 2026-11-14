@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
-import Trophy from '../../assets/Trophy';
+import { ArrowRight, Trophy as TrophyIcon } from 'lucide-react';
 import styles from './CategoriesGrid.module.css';
 
 const categories = [
@@ -33,65 +33,23 @@ const CategoryCard = ({ cat, onClick }) => {
   const tamilText = parts[0];
   const englishText = parts.length > 1 ? parts[1] : null;
 
-  const cardRef = useRef(null);
-
-  const handleMouseMove = (e) => {
-    if (!cardRef.current) return;
-    const rect = cardRef.current.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    
-    // For flashlight effect
-    cardRef.current.style.setProperty('--mouse-x', `${x}px`);
-    cardRef.current.style.setProperty('--mouse-y', `${y}px`);
-
-    // For 3D tilt (Stronger and smoother)
-    const centerX = rect.width / 2;
-    const centerY = rect.height / 2;
-    const rotateX = ((y - centerY) / centerY) * -35; 
-    const rotateY = ((x - centerX) / centerX) * 35;
-
-    gsap.to(cardRef.current, {
-      rotateX,
-      rotateY,
-      scale: 1.05,
-      y: -10, // lift up
-      duration: 0.4,
-      ease: 'power3.out',
-      transformPerspective: 800
-    });
-  };
-
-  const handleMouseLeave = () => {
-    if (!cardRef.current) return;
-    gsap.to(cardRef.current, {
-      rotateX: 0,
-      rotateY: 0,
-      scale: 1,
-      y: 0,
-      duration: 1.2,
-      ease: 'elastic.out(1.2, 0.3)' // Premium fluid bounce back
-    });
-  };
-
   return (
     <div 
-      ref={cardRef}
-      className={`glass-card ${styles.card}`}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
+      className={styles.card}
       onClick={() => onClick && onClick(cat)}
-      style={{ cursor: 'pointer' }}
     >
-      <div className={styles.cardGlow}></div>
-      <div className={styles.cardContent}>
-        <div className={styles.iconWrapper}>
-          <Trophy size={36} />
+      <div className={styles.cardLeft}>
+        <div className={styles.iconCircle}>
+          <TrophyIcon size={20} className={styles.trophyIcon} />
         </div>
-        <h3 className={styles.categoryName}>
-          {englishText && <span className={styles.englishText}>{englishText}</span>}
+        <div className={styles.textContainer}>
+          {englishText && <h4 className={styles.englishText}>{englishText}</h4>}
           <span className={styles.tamilText}>{tamilText}</span>
-        </h3>
+        </div>
+      </div>
+
+      <div className={styles.actionBtn}>
+        <ArrowRight size={16} className={styles.actionArrow} />
       </div>
     </div>
   );
@@ -101,20 +59,19 @@ const CategoriesGrid = ({ onCategoryClick }) => {
   const gridRef = useRef(null);
 
   useEffect(() => {
-    const cards = gridRef.current.querySelectorAll(`.${styles.card}`);
+    const cards = gridRef.current ? gridRef.current.querySelectorAll(`.${styles.card}`) : [];
     
-    // Intersection Observer to trigger animation on scroll
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           gsap.fromTo(cards, 
-            { y: 50, opacity: 0 }, 
-            { y: 0, opacity: 1, duration: 0.8, stagger: 0.08, ease: 'power2.out' }
+            { y: 35, opacity: 0 }, 
+            { y: 0, opacity: 1, duration: 0.6, stagger: 0.04, ease: 'power2.out' }
           );
           observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.1 });
+    }, { threshold: 0.05 });
 
     if (gridRef.current) {
       observer.observe(gridRef.current);
@@ -128,16 +85,20 @@ const CategoriesGrid = ({ onCategoryClick }) => {
   return (
     <section className={styles.categoriesSection} id="categories">
       <div className={styles.container}>
-        <div className={styles.header}>
-          <h2 className={`${styles.heading} section-heading`}>Award Categories</h2>
-          <div className={styles.goldLine}></div>
+        
+        {/* Centered Award Recognitions & Heading */}
+        <div className={styles.headerCenter}>
+          <span className={styles.eyebrow}>AWARD RECOGNITIONS</span>
+          <h2 className={styles.heading}>Explore Award Categories</h2>
         </div>
         
+        {/* Clean 3-Column Grid */}
         <div className={styles.grid} ref={gridRef}>
           {categories.map((cat, idx) => (
             <CategoryCard key={idx} cat={cat} onClick={onCategoryClick} />
           ))}
         </div>
+
       </div>
     </section>
   );

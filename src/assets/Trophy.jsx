@@ -11,12 +11,14 @@ const Trophy = ({ size = 80, className = "" }) => (
   >
     <defs>
       <linearGradient id="primaryGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stopColor="#C0C0C0" />
-        <stop offset="100%" stopColor="#808080" />
+        <stop offset="0%" stopColor="#FAF9F6" />
+        <stop offset="35%" stopColor="#DFBE7E" />
+        <stop offset="70%" stopColor="#C5A059" />
+        <stop offset="100%" stopColor="#8F7030" />
       </linearGradient>
       <linearGradient id="primaryGradientDark" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stopColor="#808080" />
-        <stop offset="100%" stopColor="#696969" />
+        <stop offset="0%" stopColor="#C5A059" />
+        <stop offset="100%" stopColor="#5E481B" />
       </linearGradient>
     </defs>
     

@@ -2,10 +2,10 @@ import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 
 const COLORS = [
-  'rgba(192, 192, 192, 0.18)', // Silver bokeh
-  'rgba(255, 240, 200, 0.12)', // Warm white
-  'rgba(185, 28, 28, 0.10)', // Crimson
-  'rgba(30, 60, 180, 0.08)' // Deep blue
+  'rgba(197, 160, 89, 0.12)',  // Soft Champagne Gold
+  'rgba(74, 107, 86, 0.08)',   // Muted Botanical Sage
+  'rgba(231, 238, 231, 0.30)', // Light Sage Glow
+  'rgba(234, 219, 192, 0.15)'  // Warm Linen
 ];
 
 const BokehBackground = () => {

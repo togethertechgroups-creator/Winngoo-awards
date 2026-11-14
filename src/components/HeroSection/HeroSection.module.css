@@ -1,22 +1,41 @@
 .heroSection {
   width: 100%;
-  min-height: 100vh;
-  padding-top: 90px;
+  min-height: 90vh;
+  padding-top: 130px;
+  padding-bottom: 70px;
   display: flex;
   align-items: center;
   position: relative;
   overflow: hidden;
-  background-image: url('/images/bg h.png');
-  background-size: cover;
-  background-position: center;
+  background-color: #2B4736;
+  color: #FAF7F2;
 }
 
-.heroOverlay {
-  display: none;
+/* Subtle Organic Ambient Glows */
+.ambientTopRight {
+  position: absolute;
+  top: -120px;
+  right: -80px;
+  width: 550px;
+  height: 550px;
+  background: radial-gradient(circle, rgba(197, 160, 89, 0.18) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.ambientBottomLeft {
+  position: absolute;
+  bottom: -100px;
+  left: -80px;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(234, 219, 192, 0.12) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
 }
 
 .container {
-  max-width: 1400px;
+  max-width: 1300px;
   width: 100%;
   margin: 0 auto;
   padding: 0 2rem;
@@ -24,314 +43,326 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 4rem;
-  z-index: 5;
+  gap: 3.5rem;
+  z-index: 2;
 }
 
-/* Left side — Winngoo Brand Block */
-.brandBlock {
-  position: relative;
-  width: 55%;
+/* ──────────────────────────────────────
+   Left Column — Editorial Content
+   ────────────────────────────────────── */
+.leftColumn {
+  width: 54%;
+  max-width: 640px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
 }
 
-.trophyBg {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  opacity: 0.1;
-  z-index: -2;
-  pointer-events: none;
+.eyebrowTag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-body);
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  color: #EADBC0;
+  margin-bottom: 1.2rem;
 }
 
+.eyebrowDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #C5A059;
+}
 
-.yearBg {
-  position: absolute;
-  top: -4rem;
-  left: -2rem;
+.mainHeading {
   font-family: var(--font-heading);
-  font-size: 14rem;
-  color: transparent;
-  -webkit-text-stroke: 2px var(--color-primary-shadow);
-  opacity: 0.15;
-  z-index: -1;
-  pointer-events: none;
-  line-height: 1;
-}
-
-.logoWrapper {
-  margin-bottom: 2rem;
-}
-
-.brandTitle {
-  font-family: var(--font-heading);
-  font-size: clamp(2.5rem, 4vw, 3.5rem);
-  letter-spacing: 0.15em;
-  color: var(--color-text-main);
-  line-height: 1.2;
-  margin-bottom: 1.5rem;
-  text-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
-}
-
-.goldRule {
-  height: 2px;
-  background: linear-gradient(90deg, var(--color-primary), transparent);
-  margin-bottom: 1.5rem;
-  /* width is animated via Anime.js */
-  width: 0;
+  font-size: clamp(2.6rem, 4.2vw, 3.8rem);
+  font-weight: 600;
+  color: #FAF7F2;
+  line-height: 1.15;
+  margin: 0 0 1.2rem 0;
+  letter-spacing: -0.01em;
 }
 
 .tagline {
   font-family: var(--font-body);
-  font-style: italic;
-  font-size: 1.2rem;
-  background: linear-gradient(135deg, #C0C0C0 0%, #FFFFFF 50%, #A9A9A9 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  margin-bottom: 2.5rem;
+  font-size: 1.08rem;
+  line-height: 1.65;
+  color: #D2DCD4;
+  margin: 0 0 2rem 0;
+  max-width: 520px;
 }
 
-.venueChip {
+.ctaRow {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 2.8rem;
+  flex-wrap: wrap;
+}
+
+.primaryBtn {
   display: inline-flex;
-  padding: 0.8rem 1.5rem;
+  align-items: center;
+  gap: 0.65rem;
+  background-color: #FAF7F2;
+  color: #2B4736;
+  font-family: var(--font-body);
+  font-size: 0.98rem;
+  font-weight: 600;
+  padding: 0.85rem 2rem;
   border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+.primaryBtn:hover {
+  transform: translateY(-3px) scale(1.02);
+  background-color: #FFFFFF;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.28);
+}
+
+.secondaryLink {
+  font-family: var(--font-body);
   font-size: 0.95rem;
-  color: var(--color-text-main);
-  letter-spacing: 1px;
+  font-weight: 600;
+  color: #FAF7F2;
+  border-bottom: 1.5px solid rgba(250, 247, 242, 0.7);
+  padding-bottom: 2px;
+  transition: all 0.25s ease;
 }
 
-/* Editorial Image Composition */
-.imageColumn {
-  position: relative;
-  width: 48%;
-  height: 70vh;
-  max-height: 700px;
-  z-index: 1;
-  margin-left: 2rem;
-  /* Image on right, space on left */
+.secondaryLink:hover {
+  color: #EADBC0;
+  border-color: #EADBC0;
 }
 
-.imageWrapper {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  border-radius: 24px;
-  overflow: hidden;
-  box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.4);
-  transform-style: preserve-3d;
-}
-
-.heroImage {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center 20%;
-  border-radius: 16px;
-  filter: contrast(1.1) saturate(1.1) brightness(1.05);
-  /* CSS simulated enhancement */
-  image-rendering: high-quality;
-  /* Request best scaling algorithm from browser */
-  transition: transform 1.5s ease;
-}
-
-.imageOverlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(26, 10, 14, 0) 50%, rgba(26, 10, 14, 0.8) 100%);
-  z-index: 2;
-  pointer-events: none;
-}
-
-.spotlightLeft {
-  position: absolute;
-  width: 400px;
-  height: 600px;
-  background: radial-gradient(ellipse at top, rgba(142, 31, 48, 0.08) 0%, transparent 70%);
-  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-  top: -100px;
-  left: -80px;
-  transform: rotate(-15deg);
-  pointer-events: none;
-  animation: spotlightPulse 6s ease-in-out infinite;
-}
-
-.spotlightRight {
-  position: absolute;
-  width: 400px;
-  height: 600px;
-  background: radial-gradient(ellipse at top, rgba(142, 31, 48, 0.06) 0%, rgba(142, 31, 48, 0.05) 40%, transparent 70%);
-  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-  top: -100px;
-  right: -80px;
-  transform: rotate(15deg);
-  pointer-events: none;
-  animation: spotlightPulse 6s ease-in-out infinite reverse;
-}
-
-@keyframes spotlightPulse {
-  0% {
-    opacity: 0.6;
-  }
-
-  50% {
-    opacity: 1.0;
-  }
-
-  100% {
-    opacity: 0.6;
-  }
-}
-
-.guestLabel {
-  position: absolute;
-  bottom: -2rem;
-  left: 50%;
-  transform: translateX(-50%);
-  padding: 1.25rem 2rem;
+/* 4 Feature Badges */
+.featureBadgesRow {
   display: flex;
-  flex-direction: column;
-  gap: 0.35rem;
-  z-index: 10;
-  text-align: center;
   align-items: center;
-  min-width: 320px;
-  max-width: 90%;
-
-  background: rgba(26, 10, 14, 0.95);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(212, 175, 55, 0.3);
-  border-radius: 16px;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7), 0 0 25px rgba(142, 31, 48, 0.2);
-}
-
-.guestRole {
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  background: linear-gradient(135deg, #C0C0C0 0%, #FFFFFF 50%, #A9A9A9 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-weight: 700;
-}
-
-.guestName {
-  font-size: 1.5rem;
-  font-family: var(--font-heading);
-  color: var(--color-text-main);
-  line-height: 1.2;
-}
-
-.guestTitle {
-  font-size: 0.9rem;
-  color: var(--color-text-muted);
-}
-
-.cardDivider {
+  gap: 1.8rem;
+  flex-wrap: wrap;
+  padding-top: 1.2rem;
+  border-top: 1px solid rgba(250, 247, 242, 0.16);
   width: 100%;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.5), transparent);
-  margin: 0.5rem 0;
 }
 
-.eventDetailsBox {
+.featureBadgeItem {
   display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-  width: 100%;
   align-items: center;
+  gap: 0.7rem;
 }
 
-.eventDetailItem {
+.badgeCircle {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1px solid rgba(250, 247, 242, 0.2);
+  background: rgba(250, 247, 242, 0.1);
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
-  font-size: 0.85rem;
-  color: var(--color-text-main);
-  background: rgba(255, 255, 255, 0.06);
-  padding: 0.4rem 0.85rem;
-  border-radius: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  width: 100%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.badgeIcon {
+  color: #EADBC0;
+}
+
+.badgeText {
+  font-family: var(--font-body);
+  font-size: 0.76rem;
+  font-weight: 500;
+  color: #D2DCD4;
+  line-height: 1.3;
+  white-space: pre-line;
+}
+
+/* ──────────────────────────────────────
+   Right Column — Chief Guest Square Card (1:1 Ratio)
+   ────────────────────────────────────── */
+.rightColumn {
+  width: 44%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding-right: 30px;
+}
+
+.guestCardWrapper {
+  position: relative;
+  width: 360px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* 3D Gold Statuette Award Trophy Standing to the Right of Chief Guest */
+.trophyWrapper {
+  position: absolute;
+  right: -185px;
+  bottom: 0px;
+  height: 440px;
+  z-index: 15;
+  pointer-events: none;
+  filter: drop-shadow(0 16px 32px rgba(0, 0, 0, 0.45)) drop-shadow(0 0 18px rgba(197, 160, 89, 0.35));
+  animation: trophyFloat 4.5s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+.trophyImg {
+  height: 100%;
+  width: auto;
+  object-fit: contain;
+  display: block;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+@keyframes trophyFloat {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  100% {
+    transform: translateY(-8px) rotate(-0.5deg);
+  }
+}
+
+/* Square Photo Frame (1:1 Aspect Ratio) */
+.guestFrame {
+  width: 360px;
+  height: 360px;
+  aspect-ratio: 1 / 1;
+  border-radius: 24px;
+  background: rgba(250, 247, 242, 0.1);
+  padding: 8px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.28);
+  border: 1px solid rgba(197, 160, 89, 0.35);
   box-sizing: border-box;
 }
 
-.eventDetailIcon {
-  color: #D4AF37;
-  flex-shrink: 0;
+.chiefGuestImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  border-radius: 18px;
+  display: block;
 }
 
-.eventDetailText {
-  font-weight: 500;
-  letter-spacing: 0.3px;
-  white-space: nowrap;
+/* Clean Guest Badge Underneath (No Tags) */
+.guestBadge {
+  position: relative;
+  margin-top: 1rem;
+  z-index: 10;
+  width: 360px;
+  background: #FAF7F2;
+  border: 1px solid rgba(197, 160, 89, 0.3);
+  border-radius: 20px;
+  padding: 1rem 1.4rem;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.guestName {
+  font-family: var(--font-heading);
+  font-size: 1.65rem;
+  font-weight: 700;
+  color: #2B4736;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.guestRole {
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  color: #5A6860;
+}
+
+/* ──────────────────────────────────────
+   Responsive Breakpoints
+   ────────────────────────────────────── */
+@media (max-width: 1300px) {
+  .rightColumn {
+    padding-right: 20px;
+  }
+  .trophyWrapper {
+    right: -145px;
+    height: 400px;
+  }
 }
 
 @media (max-width: 1024px) {
+  .heroSection {
+    padding-top: 110px;
+    padding-bottom: 4rem;
+    min-height: auto;
+  }
   .container {
     flex-direction: column;
     text-align: center;
-    padding-top: 8rem;
+    gap: 3.5rem;
   }
-
-  .brandBlock {
+  .leftColumn {
     width: 100%;
+    max-width: 680px;
     align-items: center;
   }
-
-  .goldRule {
-    background: linear-gradient(90deg, transparent, var(--color-primary), transparent);
+  .tagline {
+    text-align: center;
   }
-
-  .yearBg {
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 8rem;
-    top: -2rem;
-  }
-
-  .imageColumn {
-    width: 90%;
-    height: 50vh;
-    margin-right: 0;
+  .ctaRow {
     justify-content: center;
+  }
+  .featureBadgesRow {
+    justify-content: center;
+  }
+  .rightColumn {
+    width: 100%;
+    padding-right: 0;
+  }
+  .trophyWrapper {
+    height: 330px;
+    right: -95px;
+    bottom: 5px;
   }
 }
 
 @media (max-width: 640px) {
   .heroSection {
-    min-height: auto;
-    padding-bottom: 4rem;
+    padding-top: 95px;
+    padding-bottom: 3rem;
   }
-  .container {
-    padding-top: 2rem;
-    gap: 2rem;
+  .mainHeading {
+    font-size: 2.2rem;
   }
-  .brandTitle {
-    font-size: 2rem;
+  .guestFrame {
+    width: 290px;
+    height: 290px;
   }
-  .yearBg {
-    font-size: 5rem;
-    top: -1rem;
-  }
-  .guestLabel {
-    bottom: -3rem;
-    padding: 1rem 2rem;
-    border-radius: 12px;
-    width: 90%;
+  .guestBadge {
+    width: 290px;
   }
   .guestName {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
   }
-  .guestRole {
-    font-size: 0.65rem;
-  }
-  .imageColumn {
-    width: 100%;
-    height: 40vh;
+  .trophyWrapper {
+    height: 240px;
+    right: -45px;
+    bottom: 5px;
   }
 }

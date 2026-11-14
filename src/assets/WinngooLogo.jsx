@@ -11,8 +11,9 @@ const WinngooLogo = ({ size = 60, className = "" }) => (
   >
     <defs>
       <linearGradient id="hexGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stopColor="#C0C0C0" />
-        <stop offset="100%" stopColor="#B91C1C" />
+        <stop offset="0%" stopColor="#FAF9F6" />
+        <stop offset="50%" stopColor="#DFBE7E" />
+        <stop offset="100%" stopColor="#C5A059" />
       </linearGradient>
     </defs>
     

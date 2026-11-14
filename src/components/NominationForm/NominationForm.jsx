@@ -33,6 +33,7 @@ const NominationForm = ({ preSelectedCategory }) => {
   const [activeTab, setActiveTab] = useState('participant');
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submittedApplyingFor, setSubmittedApplyingFor] = useState('');
   
   const { register, handleSubmit, formState: { errors }, setValue } = useForm();
 
@@ -50,6 +51,8 @@ const NominationForm = ({ preSelectedCategory }) => {
       let message = "";
       
       if (activeTab === 'participant') {
+        setSubmittedApplyingFor(data.applyingFor);
+        const feeAmount = data.applyingFor === 'Individual' ? '₹3,500' : '₹5,000';
         message = `🏆 *New Nomination - Winngoo Awards* 🏆\n` +
                   `-----------------------------------\n` +
                   `*Name:* ${data.name}\n` +
@@ -58,6 +61,7 @@ const NominationForm = ({ preSelectedCategory }) => {
                   `*Email:* ${data.email}\n` +
                   `*Designation:* ${data.designation}\n` +
                   `*Applying For:* ${data.applyingFor}\n` +
+                  `*Registration Fee:* ${feeAmount}\n` +
                   `*Ownership:* ${data.ownership}\n` +
                   `*Award Title:* ${data.awardTitle}\n` +
                   `*Experience:* ${data.experience} Years\n` +
@@ -98,7 +102,7 @@ const NominationForm = ({ preSelectedCategory }) => {
               Your nomination has been successfully submitted. Our executive will contact you shortly.
             </p>
             <div className={styles.qrSection}>
-              <h3 className={styles.qrTitle}>Proceed to Payment Now ({activeTab === 'participant' ? '₹5,000' : '₹50,000'})</h3>
+              <h3 className={styles.qrTitle}>Proceed to Payment Now ({activeTab === 'participant' ? (submittedApplyingFor === 'Individual' ? '₹3,500' : '₹5,000') : '₹50,000'})</h3>
               <div className={styles.qrWrapper}>
                 <img src={qrCodeImg} alt="Payment QR Code" className={styles.qrImage} />
               </div>
@@ -148,7 +152,7 @@ const NominationForm = ({ preSelectedCategory }) => {
           {activeTab === 'participant' ? (
             <>
               <div className={styles.noteBox}>
-                <p>உங்கள் நாமினேஷன் பதிவு செய்ய எந்த கட்டணமும் இல்லை மற்றும் நீங்கள் இந்த விருதிற்கு தேர்வு செய்யப்படும் பட்சத்தில் விருது வழங்கும் விழாவில் பங்கேற்பதற்காகவும் விருதின் நன்மைகளை அடைவதற்கும் 5000 ரூபாய் மட்டும் கட்டணமாக செலுத்தப்பட வேண்டும்.</p>
+                <p>உங்கள் நாமினேஷன் பதிவு செய்ய எந்த கட்டணமும் இல்லை மற்றும் நீங்கள் இந்த விருதிற்கு தேர்வு செய்யப்படும் பட்சத்தில் விருது வழங்கும் விழாவில் பங்கேற்பதற்காகவும் விருதின் நன்மைகளை அடைவதற்கும் 3500 மற்றும் 5000 ரூபாய் மட்டும் கட்டணமாக செலுத்தப்பட வேண்டும்.</p>
               </div>
 
           <form key="participant-form" onSubmit={handleSubmit(onSubmit)} className={styles.form}>
@@ -283,7 +287,7 @@ const NominationForm = ({ preSelectedCategory }) => {
           ) : (
             <>
               <div className={styles.noteBox}>
-                <h4 style={{ color: '#FFFFFF', marginBottom: '0.5rem', fontSize: '1.2rem' }}>Title Sponsor Benefits</h4>
+                <h4 style={{ color: '#FAF9F6', marginBottom: '0.5rem', fontSize: '1.2rem' }}>Title Sponsor Benefits</h4>
                 <p>They will be the title sponsor for the Winngoo Awards event. We will display their brand ads in stage LED screen and honour awards will be provided. The Sponsor fee is <strong>₹50,000</strong>.</p>
               </div>
 
@@ -331,7 +335,7 @@ const NominationForm = ({ preSelectedCategory }) => {
                       type="text" 
                       value="₹50,000"
                       disabled
-                      style={{ background: 'rgba(255,255,255,0.05)', color: 'var(--color-primary-highlight)', fontWeight: 'bold' }}
+                      style={{ background: 'rgba(250,249,246,0.08)', color: 'var(--color-secondary)', fontWeight: 'bold' }}
                     />
                   </div>
                 </div>
