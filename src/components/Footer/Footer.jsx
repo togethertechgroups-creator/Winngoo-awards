@@ -60,10 +60,6 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className={styles.bottomBar}>
           <p className={styles.copyright}>© 2026 Winngoo Business Awards. All rights reserved.</p>
-          <div className={styles.footerLinks}>
-            <a href="#">Privacy Policy</a>
-            <a href="#">Terms & Conditions</a>
-          </div>
         </div>
 
       </div>

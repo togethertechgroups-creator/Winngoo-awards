@@ -265,30 +265,14 @@
   padding-top: 1.8rem;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+  text-align: center;
   font-size: 0.85rem;
   color: #8C9C8F;
-  flex-wrap: wrap;
-  gap: 1rem;
 }
 
 .copyright {
   margin: 0;
-}
-
-.footerLinks {
-  display: flex;
-  gap: 1.5rem;
-}
-
-.footerLinks a {
-  color: #8C9C8F;
-  text-decoration: none;
-  transition: color 0.2s ease;
-}
-
-.footerLinks a:hover {
-  color: #FAF7F2;
 }
 
 @media (max-width: 768px) {
