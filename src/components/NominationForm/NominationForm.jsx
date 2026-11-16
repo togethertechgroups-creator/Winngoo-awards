@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { CheckCircle2, Loader2, QrCode } from 'lucide-react';
+import { QRCodeSVG } from 'qrcode.react';
 import styles from './NominationForm.module.css';
 import qrCodeImg from '../../assets/image (1).png';
 import CustomDropdown from './CustomDropdown';
@@ -36,6 +37,11 @@ const applyingForOptions = [
   { value: "Both", label: "Both" }
 ];
 
+const packageOptions = [
+  { value: "3500", label: "₹3,500 Package" },
+  { value: "5000", label: "₹5,000 Package" }
+];
+
 const ownershipOptions = [
   { value: "Proprietorship", label: "Proprietorship" },
   { value: "Partnership", label: "Partnership" },
@@ -57,6 +63,7 @@ const NominationForm = ({ preSelectedCategory }) => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submittedApplyingFor, setSubmittedApplyingFor] = useState('');
+  const [submittedPackage, setSubmittedPackage] = useState('3500');
   
   const { register, handleSubmit, formState: { errors }, setValue, watch } = useForm();
 
@@ -64,6 +71,7 @@ const NominationForm = ({ preSelectedCategory }) => {
     register("applyingFor", { required: true });
     register("ownership", { required: true });
     register("awardTitle", { required: true });
+    register("package", { required: true });
   }, [register]);
 
   useEffect(() => {
@@ -80,8 +88,10 @@ const NominationForm = ({ preSelectedCategory }) => {
       let message = "";
       
       if (activeTab === 'participant') {
+        const selectedPkg = data.package || (data.applyingFor === 'Individual' ? '3500' : '5000');
+        setSubmittedPackage(selectedPkg);
         setSubmittedApplyingFor(data.applyingFor);
-        const feeAmount = data.applyingFor === 'Individual' ? '₹3,500' : '₹5,000';
+        const feeAmount = `₹${Number(selectedPkg).toLocaleString('en-IN')}`;
         message = `🏆 *New Nomination - Winngoo Awards* 🏆\n` +
                   `-----------------------------------\n` +
                   `*Name:* ${data.name}\n` +
@@ -90,6 +100,7 @@ const NominationForm = ({ preSelectedCategory }) => {
                   `*Email:* ${data.email}\n` +
                   `*Designation:* ${data.designation}\n` +
                   `*Applying For:* ${data.applyingFor}\n` +
+                  `*Selected Package:* ${feeAmount}\n` +
                   `*Registration Fee:* ${feeAmount}\n` +
                   `*Ownership:* ${data.ownership}\n` +
                   `*Award Title:* ${data.awardTitle}\n` +
@@ -119,6 +130,10 @@ const NominationForm = ({ preSelectedCategory }) => {
   };
 
   if (isSubmitted) {
+    const currentAmount = activeTab === 'participant' ? (submittedPackage || '3500') : '50000';
+    const formattedFee = `₹${Number(currentAmount).toLocaleString('en-IN')}`;
+    const upiUrl = `upi://pay?pa=reenajoseph0711@okaxis&pn=Reena%20Joseph&am=${currentAmount}&cu=INR&aid=uGICAgKDhkPPacg`;
+
     return (
       <section className={styles.formSection}>
         <div className={styles.container}>
@@ -131,12 +146,33 @@ const NominationForm = ({ preSelectedCategory }) => {
               Your nomination has been successfully submitted. Our executive will contact you shortly.
             </p>
             <div className={styles.qrSection}>
-              <h3 className={styles.qrTitle}>Proceed to Payment Now ({activeTab === 'participant' ? (submittedApplyingFor === 'Individual' ? '₹3,500' : '₹5,000') : '₹50,000'})</h3>
-              <div className={styles.qrWrapper}>
-                <img src={qrCodeImg} alt="Payment QR Code" className={styles.qrImage} />
+              <div className={styles.packageBadge}>
+                <span>Selected Package: <strong>{formattedFee}</strong></span>
               </div>
+              <h3 className={styles.qrTitle}>Proceed to Payment Now ({formattedFee})</h3>
+              <div className={styles.qrWrapper}>
+                <QRCodeSVG 
+                  value={upiUrl}
+                  size={170}
+                  level="H"
+                  includeMargin={false}
+                  fgColor="#1A2E24"
+                />
+              </div>
+              <div className={styles.payDetailsBox}>
+                <p>Payee: <strong>Reena Joseph</strong></p>
+                <p>UPI ID: <code>reenajoseph0711@okaxis</code></p>
+                <p>Pre-filled Amount: <strong style={{ color: '#1A2E24' }}>{formattedFee}</strong></p>
+              </div>
+              <a 
+                href={upiUrl} 
+                className={styles.upiPayButton}
+                title="Pay directly using Google Pay, PhonePe, or Paytm"
+              >
+                Pay {formattedFee} via UPI App
+              </a>
               <p className={styles.qrHelpText}>
-                Or you can pay later after getting clarifications about the awards event.
+                Scan this QR code with any UPI app (Google Pay, PhonePe, Paytm, BHIM) to pay {formattedFee}, or pay later after getting clarifications about the awards event.
               </p>
             </div>
 
@@ -244,7 +280,14 @@ const NominationForm = ({ preSelectedCategory }) => {
                 <CustomDropdown
                   name="applyingFor"
                   value={watch("applyingFor")}
-                  onChange={(val) => setValue("applyingFor", val, { shouldValidate: true, shouldDirty: true })}
+                  onChange={(val) => {
+                    setValue("applyingFor", val, { shouldValidate: true, shouldDirty: true });
+                    if (val === 'Individual' && !watch("package")) {
+                      setValue("package", "3500", { shouldValidate: true, shouldDirty: true });
+                    } else if ((val === 'Organization' || val === 'Both') && !watch("package")) {
+                      setValue("package", "5000", { shouldValidate: true, shouldDirty: true });
+                    }
+                  }}
                   options={applyingForOptions}
                   placeholder="Select an option"
                   error={!!errors.applyingFor}
@@ -277,23 +320,37 @@ const NominationForm = ({ preSelectedCategory }) => {
               </div>
             </div>
 
-            <div className={styles.formGroupFull}>
-              <label>Years of Experience (அனுபவ ஆண்டுகள்) <span className={styles.asterisk}>*</span></label>
-              <input 
-                type="number" 
-                placeholder="e.g. 5, 10" 
-                {...register("experience", { required: true, min: 0 })}
-                className={errors.experience ? styles.inputError : ''}
-              />
-            </div>
+            <div className={styles.formRow3}>
+              <div className={styles.formGroup}>
+                <label htmlFor="package">Package (கட்டணத் தொகுப்பு) <span className={styles.asterisk}>*</span></label>
+                <CustomDropdown
+                  name="package"
+                  value={watch("package")}
+                  onChange={(val) => setValue("package", val, { shouldValidate: true, shouldDirty: true })}
+                  options={packageOptions}
+                  placeholder="Select package (₹3500 / ₹5000)"
+                  error={!!errors.package}
+                />
+              </div>
 
-            <div className={styles.formGroupFull}>
-              <label>Facebook & Instagram (முகநூல் பக்கம்)</label>
-              <input 
-                type="text" 
-                placeholder="Links to your social media profiles (optional)" 
-                {...register("socialLinks")}
-              />
+              <div className={styles.formGroup}>
+                <label>Years of Experience (அனுபவ ஆண்டுகள்) <span className={styles.asterisk}>*</span></label>
+                <input 
+                  type="number" 
+                  placeholder="e.g. 5, 10" 
+                  {...register("experience", { required: true, min: 0 })}
+                  className={errors.experience ? styles.inputError : ''}
+                />
+              </div>
+
+              <div className={styles.formGroup}>
+                <label>Facebook & Instagram (முகநூல் பக்கம்)</label>
+                <input 
+                  type="text" 
+                  placeholder="Links to your social media profiles (optional)" 
+                  {...register("socialLinks")}
+                />
+              </div>
             </div>
 
             <button type="submit" className={styles.submitBtn} disabled={isSubmitting}>

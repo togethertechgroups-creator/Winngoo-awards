@@ -279,14 +279,30 @@ select option {
 /* QR Code Section */
 .qrSection {
   margin: 1.5rem 0;
-  padding: 2rem;
+  padding: 2.2rem 2rem;
   background: #F3EFE9;
   border: 1px solid var(--color-border);
   border-radius: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
+  gap: 1.1rem;
+}
+
+.packageBadge {
+  background: rgba(197, 160, 89, 0.18);
+  border: 1.5px solid rgba(197, 160, 89, 0.5);
+  border-radius: 50px;
+  padding: 0.4rem 1.4rem;
+  color: #1A2E24;
+  font-size: 0.95rem;
+  font-weight: 500;
+  box-shadow: 0 2px 8px rgba(197, 160, 89, 0.15);
+}
+
+.packageBadge strong {
+  color: #8F6B22;
+  font-weight: 700;
 }
 
 .qrTitle {
@@ -304,12 +320,63 @@ select option {
   border-radius: 16px;
   box-shadow: 0 6px 20px rgba(43, 71, 54, 0.08);
   border: 1px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .qrImage {
   width: 100%;
   height: 100%;
   object-fit: contain;
+}
+
+.payDetailsBox {
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(197, 160, 89, 0.3);
+  border-radius: 12px;
+  padding: 0.8rem 1.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: 0.88rem;
+  color: #2B4736;
+  text-align: center;
+}
+
+.payDetailsBox p {
+  margin: 0;
+}
+
+.payDetailsBox code {
+  background: rgba(197, 160, 89, 0.15);
+  padding: 0.1rem 0.4rem;
+  border-radius: 4px;
+  font-weight: 600;
+  color: #1A2E24;
+}
+
+.upiPayButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #1A2E24;
+  color: #FAF7F2;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 600;
+  padding: 0.8rem 2rem;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 14px rgba(26, 46, 36, 0.2);
+}
+
+.upiPayButton:hover {
+  background: #C5A059;
+  color: #1A2E24;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(197, 160, 89, 0.35);
 }
 
 .qrHelpText {
