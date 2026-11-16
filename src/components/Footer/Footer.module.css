@@ -1,529 +1,310 @@
-/* ==========================================================================
-   WINNGOO AWARDS - CORPORATE LUXURY FOOTER
-   Modeled after Maven's multi-column design system
-   ========================================================================== */
-
 .footer {
-  position: relative;
-  background-color: #0A2318;
+  background-color: #1A2E24;
   color: #FAF7F2;
-  margin: 3rem 1.25rem 0;
-  border-radius: 36px 36px 0 0;
-  padding: 4.5rem 3rem 2.5rem;
-  overflow: hidden;
-  box-shadow: 0 -15px 40px rgba(0, 0, 0, 0.35);
-  border-top: 1px solid rgba(197, 160, 89, 0.25);
-  border-left: 1px solid rgba(197, 160, 89, 0.12);
-  border-right: 1px solid rgba(197, 160, 89, 0.12);
+  padding: 5rem 2rem 2.5rem;
+  position: relative;
   z-index: 2;
+  border-top: 1px solid rgba(197, 160, 89, 0.25);
+  overflow: hidden;
 }
 
 /* Subtle organic ambient radial glows */
 .ambientTop {
   position: absolute;
-  top: -150px;
-  right: 10%;
-  width: 550px;
-  height: 450px;
-  background: radial-gradient(circle, rgba(197, 160, 89, 0.14) 0%, transparent 70%);
+  top: -120px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 350px;
+  background: radial-gradient(circle, rgba(197, 160, 89, 0.12) 0%, transparent 70%);
   pointer-events: none;
   z-index: 0;
-  animation: ambientFloat 8s ease-in-out infinite alternate;
+  animation: ambientPulse 6s ease-in-out infinite alternate;
 }
 
 .ambientBottom {
   position: absolute;
-  bottom: -120px;
-  left: 5%;
-  width: 500px;
-  height: 400px;
-  background: radial-gradient(circle, rgba(74, 124, 89, 0.15) 0%, transparent 70%);
+  bottom: -100px;
+  right: -50px;
+  width: 450px;
+  height: 450px;
+  background: radial-gradient(circle, rgba(234, 219, 192, 0.08) 0%, transparent 70%);
   pointer-events: none;
   z-index: 0;
 }
 
-@keyframes ambientFloat {
-  0% {
-    transform: translateY(0px) scale(0.95);
-    opacity: 0.6;
-  }
-  100% {
-    transform: translateY(-25px) scale(1.08);
-    opacity: 0.9;
-  }
-}
-
 .container {
-  max-width: 1360px;
+  max-width: 1300px;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.8rem;
   position: relative;
   z-index: 2;
-  display: flex;
-  flex-direction: column;
 }
 
-/* ==========================================================================
-   TOP SECTION: 4 Navigation Columns + Right Stay In The Loop Card
-   ========================================================================== */
-.topSection {
-  display: grid;
-  grid-template-columns: 1fr 360px;
-  gap: 4rem;
-  align-items: flex-start;
-  padding-bottom: 3.5rem;
-}
-
-/* Left: 4 Columns Grid */
-.columnsGrid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 2.2rem;
-}
-
-.col {
-  display: flex;
-  flex-direction: column;
-  gap: 1.15rem;
-}
-
-.colHeading {
-  font-family: var(--font-body, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif);
-  font-size: 0.88rem;
-  font-weight: 600;
-  color: #8FA797;
-  letter-spacing: 0.04em;
-  margin: 0;
-  text-transform: none;
-}
-
-.linkList {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.85rem;
-}
-
-.linkList li a {
-  font-family: var(--font-body, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif);
-  font-size: 0.88rem;
-  line-height: 1.45;
-  color: #FAF7F2;
-  text-decoration: none;
-  opacity: 0.92;
-  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
-  display: inline-flex;
-  align-items: center;
-  word-break: break-word;
-}
-
-.linkList li a:hover {
-  color: #EADBC0;
-  opacity: 1;
-  transform: translateX(3px);
-  text-shadow: 0 0 10px rgba(234, 219, 192, 0.4);
-}
-
-/* Badge link (e.g. Nomination [OPEN]) */
-.badgeLink {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.45rem;
-}
-
-.hiringBadge {
-  background: #14532D;
-  color: #86EFAC;
-  border: 1px solid rgba(134, 239, 172, 0.35);
-  font-size: 0.65rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  padding: 0.15rem 0.45rem;
-  border-radius: 4px;
-  line-height: 1;
-  text-transform: uppercase;
-}
-
-/* ==========================================================================
-   RIGHT SIDE: "Stay in the loop" Card + Star Rating + Verified Badge
-   ========================================================================== */
-.newsletterSide {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-
-.loopCard {
-  background: #0E2E20;
-  border: 1px solid rgba(250, 247, 242, 0.12);
-  border-radius: 14px;
-  padding: 1.6rem 1.6rem 1.4rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25);
-  backdrop-filter: blur(10px);
-}
-
-.loopTitle {
-  font-family: var(--font-body, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif);
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: #FAF7F2;
-  margin: 0;
-  letter-spacing: 0.01em;
-}
-
-.loopForm {
-  width: 100%;
-}
-
-.inputWrapper {
-  position: relative;
-  display: flex;
-  align-items: center;
-  border-bottom: 1px solid rgba(250, 247, 242, 0.35);
-  padding-bottom: 0.4rem;
-  transition: border-color 0.2s ease;
-}
-
-.inputWrapper:focus-within {
-  border-bottom-color: #EADBC0;
-}
-
-.loopInput {
-  flex: 1;
-  background: transparent;
-  border: none;
-  outline: none;
-  color: #FAF7F2;
-  font-size: 0.88rem;
-  font-family: inherit;
-  padding: 0.35rem 0;
-}
-
-.loopInput::placeholder {
-  color: #7A9382;
-  font-size: 0.88rem;
-}
-
-.loopBtn {
-  background: transparent;
-  border: none;
-  color: #8FA797;
-  font-size: 0.88rem;
-  font-weight: 500;
-  cursor: pointer;
-  padding: 0.35rem 0.5rem;
-  transition: all 0.2s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.loopBtn:hover:not(:disabled) {
-  color: #FAF7F2;
-  transform: translateX(2px);
-}
-
-.loopBtn:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-}
-
-.spinner {
-  animation: spin 1s linear infinite;
-  color: #EADBC0;
-}
-
-@keyframes spin {
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-.loopDisclaimer {
-  font-family: var(--font-body, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif);
-  font-size: 0.72rem;
-  line-height: 1.45;
-  color: #7A9382;
-  margin: 0;
-}
-
-.loopSuccess {
-  display: flex;
-  align-items: center;
-  gap: 0.65rem;
-  padding: 0.75rem 0.9rem;
-  background: rgba(34, 197, 94, 0.15);
-  border: 1px solid rgba(34, 197, 94, 0.35);
-  border-radius: 8px;
-  color: #86EFAC;
-  font-size: 0.78rem;
-  line-height: 1.4;
-}
-
-.successIcon {
-  color: #4ADE80;
-  flex-shrink: 0;
-}
-
-.loopSuccess code {
-  color: #FFFFFF;
-  font-weight: 600;
-}
-
-/* Star Rating Row */
-.ratingRow {
-  display: flex;
-  align-items: center;
-  gap: 0.65rem;
-  padding-left: 0.2rem;
-}
-
-.starGroup {
-  display: flex;
-  gap: 2px;
-  align-items: center;
-}
-
-.starIcon {
-  color: #EADBC0;
-  filter: drop-shadow(0 0 4px rgba(234, 219, 192, 0.4));
-}
-
-.ratingText {
-  font-family: var(--font-body, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif);
-  font-size: 0.82rem;
-  color: #E2ECE5;
-  font-weight: 500;
-  letter-spacing: 0.01em;
-}
-
-/* Trust Shield Badge */
-.trustBadge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.75rem;
-  background: #071A12;
-  border: 1px solid rgba(197, 160, 89, 0.25);
-  border-radius: 10px;
-  padding: 0.55rem 0.95rem;
-  width: fit-content;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
-}
-
-.shieldIconWrapper {
-  width: 32px;
-  height: 32px;
-  border-radius: 8px;
-  background: rgba(34, 197, 94, 0.15);
-  border: 1px solid rgba(74, 222, 128, 0.3);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.shieldIcon {
-  color: #4ADE80;
-}
-
-.trustText {
-  display: flex;
-  flex-direction: column;
-}
-
-.trustTitle {
-  font-size: 0.76rem;
-  font-weight: 700;
-  color: #FAF7F2;
-  letter-spacing: 0.03em;
-}
-
-.trustSubtitle {
-  font-size: 0.66rem;
-  color: #8FA797;
-  letter-spacing: 0.02em;
-}
-
-/* ==========================================================================
-   GIANT BRAND ROW: Calligraphic Logo + WINNGOO
-   ========================================================================== */
-.giantBrandRow {
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-  margin-top: 2rem;
-  padding-top: 2.5rem;
-  border-top: 1px solid rgba(250, 247, 242, 0.08);
-}
-
-.brandLogoWrap {
+/* ──────────────────────────────────────
+   Animated Brand Logo & Glowing Aura
+   ────────────────────────────────────── */
+.logoWrapper {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 72px;
-  height: 72px;
-  flex-shrink: 0;
 }
 
 .logoAura {
   position: absolute;
-  width: 90px;
-  height: 90px;
+  width: 160px;
+  height: 110px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(197, 160, 89, 0.4) 0%, transparent 70%);
-  filter: blur(12px);
+  background: radial-gradient(ellipse at center, rgba(197, 160, 89, 0.4) 0%, rgba(197, 160, 89, 0.08) 60%, transparent 80%);
+  filter: blur(16px);
   pointer-events: none;
+  animation: logoAuraPulse 3.5s ease-in-out infinite alternate;
 }
 
 .logoFloating {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: transform 0.3s ease;
+  animation: logoFloat 4s ease-in-out infinite alternate;
+  will-change: transform;
+  cursor: pointer;
+  transition: transform 0.3s ease, filter 0.3s ease;
 }
 
 .logoFloating:hover {
-  transform: scale(1.08) translateY(-2px);
+  transform: translateY(-5px) scale(1.06);
+  filter: drop-shadow(0 0 16px rgba(197, 160, 89, 0.7));
 }
 
-.giantWordmark {
-  font-family: var(--font-body, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif);
-  font-size: clamp(2.8rem, 5.5vw, 4.8rem);
-  font-weight: 700;
-  letter-spacing: 0.18em;
-  color: #FAF7F2;
-  margin: 0;
-  line-height: 1;
-  text-transform: uppercase;
-  background: linear-gradient(180deg, #FFFFFF 30%, #EADBC0 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.4));
+@keyframes logoFloat {
+  0% {
+    transform: translateY(0px);
+  }
+  100% {
+    transform: translateY(-6px);
+  }
 }
 
-/* Tamil Mission Statement */
+@keyframes logoAuraPulse {
+  0% {
+    transform: scale(0.9);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(1.2);
+    opacity: 0.85;
+  }
+}
+
+@keyframes ambientPulse {
+  0% {
+    opacity: 0.6;
+    transform: translateX(-50%) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(-50%) scale(1.1);
+  }
+}
+
 .tagline {
-  font-family: var(--font-body, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif);
-  font-size: 0.95rem;
-  line-height: 1.65;
-  color: #A4BDB0;
-  max-width: 820px;
-  margin: 1.4rem 0 2rem;
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: #D3DDD4;
+  max-width: 720px;
+  margin: 0;
   letter-spacing: 0.02em;
 }
 
-/* ==========================================================================
-   SUB-FOOTER BAR: Legal Links & Copyright
-   ========================================================================== */
-.subFooter {
+/* ──────────────────────────────────────
+   Shimmering Gold Accent Line
+   ────────────────────────────────────── */
+.goldShimmerLine {
+  width: 180px;
+  height: 1.5px;
+  background: linear-gradient(90deg, transparent, rgba(197, 160, 89, 0.8), transparent);
+  position: relative;
+  overflow: hidden;
+  margin: 0.2rem 0;
+}
+
+.goldShimmerLine::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
   width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, #FFFFFF, transparent);
+  animation: shimmerSweep 3.5s ease-in-out infinite;
+}
+
+@keyframes shimmerSweep {
+  0% {
+    left: -100%;
+  }
+  50%, 100% {
+    left: 200%;
+  }
+}
+
+.contactDetails {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.1rem;
+  font-size: 0.95rem;
+  color: #B6C4B8;
+  max-width: 620px;
+}
+
+.addressText {
+  margin: 0;
+  line-height: 1.55;
+}
+
+.phoneNumbers {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.phoneItem {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: #FAF7F2;
+  font-weight: 500;
+  text-decoration: none;
+  background: rgba(250, 247, 242, 0.06);
+  border: 1px solid rgba(250, 247, 242, 0.14);
+  padding: 0.45rem 1.1rem;
+  border-radius: 50px;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.phoneItem:hover {
+  background: rgba(250, 247, 242, 0.12);
+  border-color: rgba(197, 160, 89, 0.55);
+  transform: translateY(-2px);
+  color: #EADBC0;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25), 0 0 14px rgba(197, 160, 89, 0.25);
+}
+
+.phoneIconCircle {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(197, 160, 89, 0.18);
+  border: 1px solid rgba(197, 160, 89, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #EADBC0;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.phoneItem:hover .phoneIconCircle {
+  transform: scale(1.1) rotate(-8deg);
+  background: rgba(197, 160, 89, 0.35);
+  color: #FAF7F2;
+}
+
+.phoneDivider {
+  color: rgba(250, 247, 242, 0.3);
+}
+
+/* ──────────────────────────────────────
+   Social Links with Spring Hover & Glow
+   ────────────────────────────────────── */
+.socialRow {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  margin-top: 0.5rem;
+}
+
+.socialIcon {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(250, 247, 242, 0.08);
+  border: 1px solid rgba(250, 247, 242, 0.16);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FAF7F2;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  position: relative;
+}
+
+.socialIcon:hover {
+  background: #FAF7F2;
+  color: #1A2E24;
+  transform: translateY(-4px) scale(1.1);
+  border-color: transparent;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25), 0 0 20px rgba(197, 160, 89, 0.5);
+}
+
+/* ──────────────────────────────────────
+   Bottom Bar
+   ────────────────────────────────────── */
+.bottomBar {
+  width: 100%;
+  border-top: 1px solid rgba(250, 247, 242, 0.12);
+  margin-top: 2rem;
+  padding-top: 1.8rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  font-size: 0.85rem;
+  color: #8C9C8F;
   flex-wrap: wrap;
-  gap: 1.2rem;
-  padding-top: 1.6rem;
-  border-top: 1px solid rgba(250, 247, 242, 0.1);
-  font-size: 0.8rem;
-  color: #7A9382;
-}
-
-.legalLinks {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 1.4rem;
-}
-
-.legalLinks a {
-  color: #8FA797;
-  text-decoration: none;
-  font-size: 0.8rem;
-  transition: color 0.2s ease;
-}
-
-.legalLinks a:hover {
-  color: #FAF7F2;
+  gap: 1rem;
 }
 
 .copyright {
   margin: 0;
-  font-size: 0.8rem;
-  color: #7A9382;
 }
 
-/* ==========================================================================
-   RESPONSIVE BREAKPOINTS
-   ========================================================================== */
-@media (max-width: 1100px) {
-  .topSection {
-    grid-template-columns: 1fr;
-    gap: 3rem;
-  }
-
-  .newsletterSide {
-    max-width: 480px;
-  }
+.footerLinks {
+  display: flex;
+  gap: 1.5rem;
 }
 
-@media (max-width: 850px) {
+.footerLinks a {
+  color: #8C9C8F;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footerLinks a:hover {
+  color: #FAF7F2;
+}
+
+@media (max-width: 768px) {
   .footer {
-    margin: 2rem 0.5rem 0;
-    padding: 3.5rem 1.8rem 2rem;
-    border-radius: 28px 28px 0 0;
+    padding: 4rem 1.5rem 2rem;
   }
-
-  .columnsGrid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2.2rem 1.5rem;
-  }
-
-  .giantBrandRow {
-    gap: 1rem;
-  }
-
-  .giantWordmark {
-    font-size: clamp(2.2rem, 8vw, 3.2rem);
-    letter-spacing: 0.12em;
-  }
-
-  .subFooter {
+  .bottomBar {
     flex-direction: column;
-    align-items: flex-start;
-    gap: 1rem;
+    text-align: center;
+    gap: 0.75rem;
   }
-
-  .legalLinks {
-    gap: 1rem;
+  .phoneNumbers {
+    flex-direction: column;
+    gap: 0.8rem;
   }
-}
-
-@media (max-width: 520px) {
-  .footer {
-    margin: 1.5rem 0 0;
-    padding: 3rem 1.25rem 1.8rem;
-    border-radius: 20px 20px 0 0;
-  }
-
-  .columnsGrid {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-
-  .newsletterSide {
-    width: 100%;
-  }
-
-  .loopCard {
-    padding: 1.3rem 1.1rem;
-  }
-
-  .giantWordmark {
-    font-size: 2.2rem;
-    letter-spacing: 0.08em;
+  .phoneDivider {
+    display: none;
   }
 }
