@@ -1,0 +1,206 @@
+.dropdownContainer {
+  position: relative;
+  width: 100%;
+}
+
+.containerActive {
+  z-index: 50;
+}
+
+.dropdownTrigger {
+  width: 100%;
+  background-color: #FAF7F2;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #1C2421;
+  font-size: 0.98rem;
+  font-family: inherit;
+  padding: 0.9rem 1.1rem;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.25s ease;
+  user-select: none;
+  box-sizing: border-box;
+}
+
+.dropdownTrigger:hover {
+  border-color: #C5A059;
+  background-color: #FFFFFF;
+}
+
+.triggerOpen,
+.dropdownTrigger:focus {
+  outline: none;
+  border-color: #C5A059;
+  background-color: #FFFFFF;
+  box-shadow: 0 0 0 3px rgba(197, 160, 89, 0.25);
+}
+
+.inputError {
+  border-color: var(--color-crimson, #D32F2F) !important;
+}
+
+.placeholderText {
+  color: #7A8B7F;
+  font-weight: 400;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 0.5rem;
+}
+
+.selectedText {
+  color: #1C2421;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 0.5rem;
+}
+
+.chevronIcon {
+  color: #2B4736;
+  flex-shrink: 0;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), color 0.25s ease;
+}
+
+.chevronRotated {
+  transform: rotate(180deg);
+  color: #C5A059;
+}
+
+/* ──────────────────────────────────────
+   Floating Dropdown Menu
+   ────────────────────────────────────── */
+.dropdownMenu {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  background: #FAF7F2;
+  border: 1.5px solid rgba(197, 160, 89, 0.45);
+  border-radius: 14px;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.3), 0 0 20px rgba(197, 160, 89, 0.15);
+  overflow: hidden;
+  z-index: 60;
+  animation: menuEnter 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes menuEnter {
+  from {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.searchBox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0.75rem 0.95rem;
+  background: #FFFFFF;
+  border-bottom: 1px solid rgba(197, 160, 89, 0.25);
+}
+
+.searchIcon {
+  color: #C5A059;
+  flex-shrink: 0;
+}
+
+.searchInput {
+  border: none !important;
+  outline: none !important;
+  background: transparent !important;
+  font-size: 0.9rem !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  width: 100% !important;
+  color: #1C2421 !important;
+  box-shadow: none !important;
+}
+
+.searchInput::placeholder {
+  color: #9CA8A0;
+}
+
+.optionsList {
+  max-height: 250px;
+  overflow-y: auto;
+  padding: 6px;
+  overscroll-behavior: contain;
+}
+
+.optionsList::-webkit-scrollbar {
+  width: 6px;
+}
+
+.optionsList::-webkit-scrollbar-track {
+  background: rgba(197, 160, 89, 0.08);
+  border-radius: 6px;
+}
+
+.optionsList::-webkit-scrollbar-thumb {
+  background: #C5A059;
+  border-radius: 6px;
+}
+
+.optionsList::-webkit-scrollbar-thumb:hover {
+  background: #A6833D;
+}
+
+.optionItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 0.95rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.92rem;
+  color: #1A2E24;
+  font-weight: 500;
+  transition: all 0.16s ease;
+  user-select: none;
+  gap: 8px;
+}
+
+.optionItem:hover {
+  background: rgba(197, 160, 89, 0.18);
+  color: #14241C;
+  transform: translateX(3px);
+}
+
+.optionSelected {
+  background: #1A2E24 !important;
+  color: #EADBC0 !important;
+  font-weight: 600;
+}
+
+.optionSelected:hover {
+  background: #14241C !important;
+  color: #FFFFFF !important;
+  transform: none;
+}
+
+.optionLabel {
+  line-height: 1.4;
+  flex: 1;
+}
+
+.checkIcon {
+  color: #C5A059;
+  flex-shrink: 0;
+}
+
+.noResults {
+  padding: 1.2rem;
+  text-align: center;
+  color: #7A8B7F;
+  font-size: 0.88rem;
+}

@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import { CheckCircle2, Loader2, QrCode } from 'lucide-react';
 import styles from './NominationForm.module.css';
 import qrCodeImg from '../../assets/image (1).png';
+import CustomDropdown from './CustomDropdown';
 
 const categories = [
   "சமூக சேவை விருது / Social Service Award",
@@ -29,17 +30,45 @@ const categories = [
   "பெருமைக்குரிய தந்தை விருது / Proud Father Award"
 ];
 
+const applyingForOptions = [
+  { value: "Individual", label: "Individual" },
+  { value: "Organization", label: "Organization" },
+  { value: "Both", label: "Both" }
+];
+
+const ownershipOptions = [
+  { value: "Proprietorship", label: "Proprietorship" },
+  { value: "Partnership", label: "Partnership" },
+  { value: "Private Limited", label: "Private Limited" },
+  { value: "Public Limited", label: "Public Limited" },
+  { value: "Trust", label: "Trust" },
+  { value: "NGO", label: "NGO" },
+  { value: "Other", label: "Other" }
+];
+
+const categoryOptions = categories.map((cat) => {
+  const parts = cat.split(" / ");
+  const displayStr = parts.length > 1 ? `${parts[1]} / ${parts[0]}` : cat;
+  return { value: cat, label: displayStr };
+});
+
 const NominationForm = ({ preSelectedCategory }) => {
   const [activeTab, setActiveTab] = useState('participant');
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submittedApplyingFor, setSubmittedApplyingFor] = useState('');
   
-  const { register, handleSubmit, formState: { errors }, setValue } = useForm();
+  const { register, handleSubmit, formState: { errors }, setValue, watch } = useForm();
+
+  useEffect(() => {
+    register("applyingFor", { required: true });
+    register("ownership", { required: true });
+    register("awardTitle", { required: true });
+  }, [register]);
 
   useEffect(() => {
     if (preSelectedCategory) {
-      setValue("awardTitle", preSelectedCategory);
+      setValue("awardTitle", preSelectedCategory, { shouldValidate: true });
       setActiveTab('participant');
     }
   }, [preSelectedCategory, setValue]);
@@ -211,45 +240,40 @@ const NominationForm = ({ preSelectedCategory }) => {
 
             <div className={styles.formRow3}>
               <div className={styles.formGroup}>
-                <label>Applying for (விண்ணப்பிக்கும் முறை) <span className={styles.asterisk}>*</span></label>
-                <div className={styles.selectWrapper}>
-                  <select {...register("applyingFor", { required: true })} className={errors.applyingFor ? styles.inputError : ''}>
-                    <option value="">Select an option</option>
-                    <option value="Individual">Individual</option>
-                    <option value="Organization">Organization</option>
-                    <option value="Both">Both</option>
-                  </select>
-                </div>
+                <label htmlFor="applyingFor">Applying for (விண்ணப்பிக்கும் முறை) <span className={styles.asterisk}>*</span></label>
+                <CustomDropdown
+                  name="applyingFor"
+                  value={watch("applyingFor")}
+                  onChange={(val) => setValue("applyingFor", val, { shouldValidate: true, shouldDirty: true })}
+                  options={applyingForOptions}
+                  placeholder="Select an option"
+                  error={!!errors.applyingFor}
+                />
               </div>
 
               <div className={styles.formGroup}>
-                <label>Ownership Pattern (உரிமை முறை) <span className={styles.asterisk}>*</span></label>
-                <div className={styles.selectWrapper}>
-                  <select {...register("ownership", { required: true })} className={errors.ownership ? styles.inputError : ''}>
-                    <option value="">Select ownership</option>
-                    <option value="Proprietorship">Proprietorship</option>
-                    <option value="Partnership">Partnership</option>
-                    <option value="Private Limited">Private Limited</option>
-                    <option value="Public Limited">Public Limited</option>
-                    <option value="Trust">Trust</option>
-                    <option value="NGO">NGO</option>
-                    <option value="Other">Other</option>
-                  </select>
-                </div>
+                <label htmlFor="ownership">Ownership Pattern (உரிமை முறை) <span className={styles.asterisk}>*</span></label>
+                <CustomDropdown
+                  name="ownership"
+                  value={watch("ownership")}
+                  onChange={(val) => setValue("ownership", val, { shouldValidate: true, shouldDirty: true })}
+                  options={ownershipOptions}
+                  placeholder="Select ownership"
+                  error={!!errors.ownership}
+                />
               </div>
 
               <div className={styles.formGroup}>
-                <label>Award Title (விருது தலைப்பு) <span className={styles.asterisk}>*</span></label>
-                <div className={styles.selectWrapper}>
-                  <select {...register("awardTitle", { required: true })} className={errors.awardTitle ? styles.inputError : ''}>
-                    <option value="">Select category</option>
-                    {categories.map(cat => {
-                      const parts = cat.split(" / ");
-                      const displayStr = parts.length > 1 ? `${parts[1]} / ${parts[0]}` : cat;
-                      return <option key={cat} value={cat}>{displayStr}</option>;
-                    })}
-                  </select>
-                </div>
+                <label htmlFor="awardTitle">Award Title (விருது தலைப்பு) <span className={styles.asterisk}>*</span></label>
+                <CustomDropdown
+                  name="awardTitle"
+                  value={watch("awardTitle")}
+                  onChange={(val) => setValue("awardTitle", val, { shouldValidate: true, shouldDirty: true })}
+                  options={categoryOptions}
+                  placeholder="Select category"
+                  error={!!errors.awardTitle}
+                  searchable={true}
+                />
               </div>
             </div>
 
