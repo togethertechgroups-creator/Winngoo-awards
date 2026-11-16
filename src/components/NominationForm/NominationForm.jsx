@@ -132,7 +132,7 @@ const NominationForm = ({ preSelectedCategory }) => {
   if (isSubmitted) {
     const currentAmount = activeTab === 'participant' ? (submittedPackage || '3500') : '50000';
     const formattedFee = `₹${Number(currentAmount).toLocaleString('en-IN')}`;
-    const upiUrl = `upi://pay?pa=reenajoseph0711@okaxis&pn=Reena%20Joseph&am=${currentAmount}&cu=INR&aid=uGICAgKDhkPPacg`;
+    const upiUrl = `upi://pay?pa=reenajoseph0711@okaxis&pn=Winngoo%20Consultancy&am=${currentAmount}&cu=INR&aid=uGICAgKDhkPPacg`;
 
     return (
       <section className={styles.formSection}>
@@ -160,8 +160,7 @@ const NominationForm = ({ preSelectedCategory }) => {
                 />
               </div>
               <div className={styles.payDetailsBox}>
-                <p>Payee: <strong>Reena Joseph</strong></p>
-                <p>UPI ID: <code>reenajoseph0711@okaxis</code></p>
+                <p>Payee: <strong>Winngoo Consultancy</strong></p>
                 <p>Pre-filled Amount: <strong style={{ color: '#1A2E24' }}>{formattedFee}</strong></p>
               </div>
               <a 
